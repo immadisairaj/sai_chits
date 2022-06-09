@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sai_chits/chits.dart';
 
@@ -58,7 +59,7 @@ class PickPage extends StatelessWidget {
                 IconButton(
                   onPressed: () => Navigator.maybePop(context),
                   icon: Icon(
-                    Platform.isAndroid
+                    !kIsWeb && Platform.isAndroid
                         ? Icons.arrow_back_outlined
                         : CupertinoIcons.back,
                     size: 32,
