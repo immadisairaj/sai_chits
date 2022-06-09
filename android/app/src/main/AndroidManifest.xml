@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.immadisairaj.sai_chits.sai_chits">
    <application
-        android:label="sai_chits"
+        android:label="Sai Chits"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
