@@ -13,5 +13,5 @@
         android:height="200dp"
         android:width="200dp"
         android:gravity="center"
-        android:drawable="@drawable/ic_foreground_light" />
+        android:drawable="@drawable/ic_foreground_dark" />
 </layer-list>
