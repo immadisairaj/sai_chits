@@ -26,6 +26,7 @@ class PickPage extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Text(
           Chits.chitsList[index],
+          textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
