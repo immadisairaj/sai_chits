@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on: [push]
+  branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      my_secret: ${{secrets.ACCESS_TOKEN}}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - run: flutter clean
+      - run: flutter pub get
+      - run: flutter build web --release
+
+      # Web deploy now is contained in build/web directory
+      - run: |
+          cd build/web
+          git config --global user.email immadirajendra.sai@gmail.com
+          git config --global user.name immadisairaj
+          git init
+          # add a empty initial commit
+          touch empty
+          git add empty
+          git commit -m "empty"
+          # the repository to push the deploy into
+          git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/immadisairaj/sai_chits.git
+          git fetch
+          # add the current changes and stash them
+          git add .
+          git stash
+          git switch gh-pages
+          git stash pop
+          # resotre the staged changes as to not include files from .gitignore
+          git restore --staged .
+          git add .
+          git commit -m "${{ github.event.head_commit.message }}"
+          git push origin gh-pages
