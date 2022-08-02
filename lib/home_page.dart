@@ -13,11 +13,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Widget _swamiFrame(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Image.asset(
-        'assets/swami.jpg',
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: constraints.maxHeight * 0.1,
+              horizontal: 10,
+            ),
+            child: Image.asset(
+              'assets/swami.jpg',
+            ),
+          ),
+        );
+      },
     );
   }
 
