@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:sai_chits/chits.dart';
 import 'package:sai_chits/pick_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   Widget _swamiFrame(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -70,6 +75,24 @@ class HomePage extends StatelessWidget {
         child: _pickNavigate(context),
       ),
     ];
+  }
+
+  precacheImages(BuildContext context) {
+    // pre cache images of home page
+    precacheImage(const AssetImage("assets/swami.jpg"), context);
+    precacheImage(const AssetImage("assets/house.png"), context);
+    // pre cache images of pick page
+    precacheImage(const AssetImage("assets/left_top.png"), context);
+    precacheImage(const AssetImage("assets/right_top.png"), context);
+    precacheImage(const AssetImage("assets/left_bottom.png"), context);
+    precacheImage(const AssetImage("assets/right_bottom.png"), context);
+    precacheImage(const AssetImage("assets/shilloute.png"), context);
+  }
+
+  @override
+  void didChangeDependencies() {
+    precacheImages(context);
+    super.didChangeDependencies();
   }
 
   @override
