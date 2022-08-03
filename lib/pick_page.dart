@@ -49,11 +49,12 @@ class PickPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: const Color.fromARGB(255, 218, 253, 255),
-        child: Material(
-          color: Colors.transparent,
-          child: SafeArea(
+      backgroundColor: const Color.fromARGB(190, 218, 253, 255),
+      body: SafeArea(
+        child: Container(
+          color: const Color.fromARGB(255, 218, 253, 255),
+          child: Material(
+            color: Colors.transparent,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

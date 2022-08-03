@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
         return Center(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              vertical: constraints.maxHeight * 0.1,
+              vertical: constraints.maxHeight * 0.05,
               horizontal: 10,
             ),
             child: Image.asset(
@@ -107,23 +107,26 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.orange[200],
-        child: Center(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth > constraints.maxHeight) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: _children(context),
-                );
-              } else {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: _children(context),
-                );
-              }
-            },
+      backgroundColor: Colors.orange[300],
+      body: SafeArea(
+        child: Container(
+          color: Colors.orange[200],
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth > constraints.maxHeight) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: _children(context),
+                  );
+                } else {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: _children(context),
+                  );
+                }
+              },
+            ),
           ),
         ),
       ),
