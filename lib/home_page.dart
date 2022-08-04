@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sai_chits/chits.dart';
 import 'package:sai_chits/pick_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -104,9 +106,38 @@ class _HomePageState extends State<HomePage> {
     super.didChangeDependencies();
   }
 
+  _appBar() {
+    return kIsWeb
+        ? AppBar(
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconButton(
+                  tooltip: 'More Info',
+                  onPressed: () async {
+                    // launch the url into github repo
+                    final url =
+                        Uri.parse('https://github.com/immadisairaj/sai_chits');
+                    if (!await launchUrl(url)) {
+                      // Do nothing when cannot launch
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.info_outline,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+            backgroundColor: Colors.transparent,
+          )
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _appBar(),
       backgroundColor: Colors.orange[300],
       body: SafeArea(
         child: Container(

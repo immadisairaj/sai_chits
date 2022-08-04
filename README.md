@@ -38,9 +38,9 @@ The application is simple and does only one job well.
 
 If there are any more chits from other campuses named "Anantapur", "Muddenahalli", etc. campuses, please send them to me at [mail@immadisairaj.dev](mail+saichits@immadisairaj.dev) with a proper subject. Or, you can even open a pull request into the file [lib/chits.dart](https://github.com/immadisairaj/sai_chits/blob/main/lib/chits.dart).
 
-<!-- ## Screenshots
+## Screenshots
 
-<img src="./screenshots/screenshot_1.png" height="500"> <img src="./screenshots/screenshot_2.png" height="500"> <img src="./screenshots/screenshot_3.png" height="500"> <img src="./screenshots/screenshot_4.png" height="500"> <img src="./screenshots/screenshot_5.png" height="500"> <img src="./screenshots/screenshot_6.png" height="500"> <img src="./screenshots/screenshot_7.png" height="500"> -->
+<img src="./readme_assets/screenshot_1.png" height="500"> <img src="./readme_assets/screenshot_2.png" height="500"> <img src="./readme_assets/screenshot_3.png" width="500"> <img src="./readme_assets/screenshot_4.png" width="500">
 
 ## Privacy Policy
 
