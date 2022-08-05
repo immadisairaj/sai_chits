@@ -50094,7 +50094,7 @@ A.p3(B.t1,s)
 A.p3(B.t5,s)
 A.p3(B.t4,s)
 this.dJ()},
-Kd(){var s=null,r=A.a([new A.dq(B.aK,A.Ob(s,B.xD,s,new A.Ya(),"More Info"),s)],t.E)
+Kd(){var s=null,r=A.a([new A.dq(B.aK,A.Ob(s,B.xD,s,new A.Ya(),"Info"),s)],t.E)
 r=new A.pp(r,B.aA,new A.G8(s,s,1/0,56),s)
 return r},
 M(a,b){var s=null
