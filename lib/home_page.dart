@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: IconButton(
-                  tooltip: 'More Info',
+                  tooltip: 'Info',
                   onPressed: () async {
                     // launch the url into github repo
                     final url =
