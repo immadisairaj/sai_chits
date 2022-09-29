@@ -3,34 +3,35 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
-"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
-"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
-"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
-"index.html": "005aac035656fa3b8a59a89dac1b4ea5",
-"/": "005aac035656fa3b8a59a89dac1b4ea5",
+  "favicon.png": "73959d6ee8fed8b4fa55a1a0d839ed76",
+"main.dart.js": "c301b8beaf26423f8c698ebaf1f08e57",
 "privacy_policy.html": "974769827b0cf73f0064583fc10b96a7",
-"favicon.png": "73959d6ee8fed8b4fa55a1a0d839ed76",
-"main.dart.js": "0780bc4a23c7578cfad4f88bd659c4a2",
+"index.html": "606c4146ed681dc362404052fd9e52e0",
+"/": "606c4146ed681dc362404052fd9e52e0",
+"flutter.js": "f85e6fb278b0fd20c349186fb46ae36d",
 "manifest.json": "fdf2edd3306b9ace525efab4ce4cccd5",
-"version.json": "d40d5116fadf12f3d6149851b4b3477d",
-"flutter.js": "eb2682e33f25cd8f1fc59011497c35f8",
-"icons/Icon-maskable-512.png": "1ccc9ef77db9fddc9cbd13d7d53dc0fe",
-"icons/Icon-512.png": "86627b74c111548017ac8c871e8334c5",
-"icons/Icon-maskable-192.png": "ae9fcda4f3d820b2bb2e242684381bd2",
-"icons/Icon-192.png": "08636e7c0afcde957ea33d727ddec653",
+"canvaskit/canvaskit.js": "2bc454a691c631b07a9307ac4ca47797",
+"canvaskit/canvaskit.wasm": "bf50631470eb967688cca13ee181af62",
+"canvaskit/profiling/canvaskit.js": "38164e5a72bdad0faa4ce740c9b8e564",
+"canvaskit/profiling/canvaskit.wasm": "95a45378b69e77af5ed2bc72b2209b94",
+"assets/AssetManifest.json": "493f1d6b8e7e0b1e81595755ce9eb2a2",
+"assets/shaders/ink_sparkle.frag": "6b16a147d705beed121dfeee567d9ef4",
+"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"assets/NOTICES": "0dc5f7cb3e3d7cf4dc0e7a77fe64a3c4",
-"assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
-"assets/assets/left_top.png": "d71e59d08a4282dd44b60d5687deb8b0",
+"assets/assets/swami.jpg": "4025af332e72a7fa39311e5f24e90d7a",
+"assets/assets/right_top.png": "e549012bec1e1f1d544e067a8696bdd7",
 "assets/assets/house.png": "a5acdbe1d91a8280ac88481eb7ce7b95",
 "assets/assets/left_bottom.png": "487aed7445d104591d38186303903190",
 "assets/assets/shilloute.png": "d3da9392bda1335ceb7f4585b9efc821",
-"assets/assets/swami.jpg": "4025af332e72a7fa39311e5f24e90d7a",
-"assets/assets/right_top.png": "e549012bec1e1f1d544e067a8696bdd7",
 "assets/assets/right_bottom.png": "390527089db3f306f215c3fb53f80915",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/AssetManifest.json": "493f1d6b8e7e0b1e81595755ce9eb2a2"
+"assets/assets/left_top.png": "d71e59d08a4282dd44b60d5687deb8b0",
+"assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
+"assets/NOTICES": "77e809080179e0af083cb751e2d22d68",
+"version.json": "d40d5116fadf12f3d6149851b4b3477d",
+"icons/Icon-512.png": "86627b74c111548017ac8c871e8334c5",
+"icons/Icon-192.png": "08636e7c0afcde957ea33d727ddec653",
+"icons/Icon-maskable-192.png": "ae9fcda4f3d820b2bb2e242684381bd2",
+"icons/Icon-maskable-512.png": "1ccc9ef77db9fddc9cbd13d7d53dc0fe"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -38,7 +39,6 @@ const RESOURCES = {
 const CORE = [
   "main.dart.js",
 "index.html",
-"assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
@@ -137,9 +137,11 @@ self.addEventListener("fetch", (event) => {
     .then((cache) =>  {
       return cache.match(event.request).then((response) => {
         // Either respond with the cached resource, or perform a fetch and
-        // lazily populate the cache.
+        // lazily populate the cache only if the resource was successfully fetched.
         return response || fetch(event.request).then((response) => {
-          cache.put(event.request, response.clone());
+          if (response && Boolean(response.ok)) {
+            cache.put(event.request, response.clone());
+          }
           return response;
         });
       })
