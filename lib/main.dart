@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sai_chits/home_page.dart';
-import 'package:sai_chits/web_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.cyan,
       ),
-      home: kIsWeb ? const WebPage() : const HomePage(),
+      home: const HomePage(),
     );
   }
 }
