@@ -27,6 +27,7 @@ jobs:
           cd web-deploy
           git config --global user.email immadirajendra.sai@gmail.com
           git config --global user.name immadisairaj
+          git config --global init.defaultBranch main
           git init
           # the repository to push the deploy into
           git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/immadisairaj/sai_chits.git
