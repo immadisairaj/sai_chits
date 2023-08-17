@@ -44,7 +44,7 @@ If there are any more chits from other campuses named "Anantapur", "Muddenahalli
 
 ## Privacy Policy
 
-The Privacy Policy of the app is in the site: [immadisairaj.github.io/sai_chits/privacy_policy.html](https://immadisairaj.github.io/sai_chits/privacy_policy.html)
+The Privacy Policy of the app is in the site: [saichits.immadisairaj.dev/privacy_policy.html](saichits.immadisairaj.dev/privacy_policy.html)
 
 ## License
 
