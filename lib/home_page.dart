@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:pwa_install/pwa_install.dart';
 import 'package:sai_chits/chits.dart';
 import 'package:sai_chits/pick_page.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, constraints) {
             return Center(
               child: Padding(
-                padding: EdgeInsets.only(top: constraints.maxHeight * 0.08),
+                padding: EdgeInsets.only(top: constraints.maxHeight * 0.095),
                 child: ElevatedButton(
                   onPressed: () {
                     int count = Chits.chitsList.length;
@@ -128,6 +129,25 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              // Download if prompt is enabled
+              if (PWAInstall().installPromptEnabled)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                    tooltip: 'Download',
+                    onPressed: () {
+                      try {
+                        PWAInstall().promptInstall_();
+                      } catch (e) {
+                        debugPrint(e.toString());
+                      }
+                    },
+                    icon: const Icon(
+                      Icons.download_outlined,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
             ],
             backgroundColor: Colors.transparent,
           )
@@ -143,9 +163,9 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           color: Colors.orange[200],
           child: Center(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth > constraints.maxHeight) {
+            child: OrientationBuilder(
+              builder: (context, orientation) {
+                if (orientation == Orientation.landscape) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: _children(context),

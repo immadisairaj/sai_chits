@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pwa_install/pwa_install.dart';
 import 'package:sai_chits/home_page.dart';
 
 void main() {
+  PWAInstall().setup(installCallback: () {
+    debugPrint('APP INSTALLED!');
+  });
   runApp(const MyApp());
 }
 
@@ -16,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Sai Chits',
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.cyan,
+        colorSchemeSeed: Colors.cyan,
       ),
       home: const HomePage(),
     );
