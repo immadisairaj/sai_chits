@@ -9,13 +9,13 @@
   <a href="https://github.com/immadisairaj/sai_chits/blob/main/LICENSE.md">
     <img src="https://img.shields.io/github/license/immadisairaj/sai_chits.svg" alt="license">
   </a>
-  <a href="https://immadisairaj.github.io/sai_chits/privacy_policy.html">
+  <a href="https://saichits.immadisairaj.dev/privacy_policy.html">
     <img src="https://img.shields.io/badge/privacy-policy-ea4ca0.svg" alt="privacy policy">
   </a>
 </p>
 <!-- TODO: add GitHub Play and App Store -->
 <p align="center">
-  <a href='https://immadisairaj.github.io/sai_chits/'><img height="80px" alt='Get it on Google Play' src='./readme_assets/PWA-dark-en.svg'/></a>
+  <a href='https://saichits.immadisairaj.dev'><img height="80px" alt='Get it on Google Play' src='./readme_assets/PWA-dark-en.svg'/></a>
 </p>
 <br>
 
