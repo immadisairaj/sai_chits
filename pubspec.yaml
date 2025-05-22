@@ -17,7 +17,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
 # versioning style <major>.<feature>.<fixes>+<commits>
-version: 0.1.2+34
+version: 1.0.0+35
 # !Note: also update in web/version.json
 
 environment:
@@ -38,6 +38,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
 
+  http: ^1.4.0
   package_info_plus: ^8.3.0
   pwa_install: ^0.0.6
   url_launcher: ^6.3.1
@@ -51,7 +52,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

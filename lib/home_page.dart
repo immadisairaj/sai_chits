@@ -1,7 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pwa_install/pwa_install.dart';
 import 'package:sai_chits/chits.dart';
 import 'package:sai_chits/pick_page.dart';
@@ -18,6 +22,63 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    showUpdate();
+  }
+
+  void showUpdate() async {
+    // We are doing this only on android
+    if (kIsWeb) return;
+    if (!Platform.isAndroid) return;
+
+    final info = await PackageInfo.fromPlatform();
+    final appVersion = info.version;
+    final url = Uri.parse('https://saichits.immadisairaj.dev/version.json');
+    http.get(url).then((response) {
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body);
+        final globalVersion = json['app_version'];
+        final whatsNew = (json['whats_new'] != null)
+            ? '\nWhat\'s New: ${json['whats_new']}'
+            : '';
+
+        if (globalVersion != appVersion) {
+          if (!mounted) return;
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('Update Available'),
+                content: Text(
+                  'A new version '
+                  'from $appVersion -> to $globalVersion '
+                  'is available.'
+                  '$whatsNew',
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      final url = Uri.parse(
+                        'https://saichits.immadisairaj.dev/sai-chits.apk',
+                      );
+                      if (!await launchUrl(url)) {
+                        // Do nothing when cannot launch
+                      }
+                    },
+                    child: const Text('Download'),
+                  ),
+                ],
+              );
+            },
+          );
+        }
+      }
+    });
   }
 
   Widget _swamiFrame(BuildContext context) {

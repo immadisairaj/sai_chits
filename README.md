@@ -12,6 +12,9 @@
   <a href="https://saichits.immadisairaj.dev/privacy_policy.html">
     <img src="https://img.shields.io/badge/privacy-policy-ea4ca0.svg" alt="privacy policy">
   </a>
+  <a href="https://saichits.immadisairaj.dev/sai-chits.apk">
+    <img src="https://img.shields.io/badge/download-apk-a4c639.svg" alt="Download apk">
+  </a>
 </p>
 <p align="center">
   <a href='https://saichits.immadisairaj.dev'><img height="80px" alt='Open the Progressive Web App' src='./readme_assets/PWA-dark-en.svg'/></a>
@@ -23,7 +26,7 @@
   </a>
 </p> -->
   
-__You can also install the apk file from [here](https://saichits.immadisairaj.dev/sai-chits.apk).__
+__You can also install the Android APK file from [here](https://saichits.immadisairaj.dev/sai-chits.apk).__
 
 <br>
 
