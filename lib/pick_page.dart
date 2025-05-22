@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:sai_chits/chits.dart';
 
 class PickPage extends StatelessWidget {
-  const PickPage({Key? key, required this.index}) : super(key: key);
+  const PickPage({super.key, required this.index});
 
   final int index;
 

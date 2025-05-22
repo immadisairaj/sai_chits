@@ -14,8 +14,17 @@
   </a>
 </p>
 <p align="center">
-  <a href='https://saichits.immadisairaj.dev'><img height="80px" alt='Get it on Google Play' src='./readme_assets/PWA-dark-en.svg'/></a>
+  <a href='https://saichits.immadisairaj.dev'><img height="80px" alt='Open the Progressive Web App' src='./readme_assets/PWA-dark-en.svg'/></a>
 </p>
+
+<!-- <p align="center">
+  <a href="https://saichits.immadisairaj.dev/sai-chits.apk">
+    <img src="https://img.shields.io/badge/download-apk-ff69b4.svg" alt="download apk">
+  </a>
+</p> -->
+  
+__You can also install the apk file from [here](https://saichits.immadisairaj.dev/sai-chits.apk).__
+
 <br>
 
 ## What this app does

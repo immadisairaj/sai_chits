@@ -8,13 +8,18 @@ import 'package:sai_chits/pick_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   Widget _swamiFrame(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -24,9 +29,7 @@ class _HomePageState extends State<HomePage> {
               vertical: constraints.maxHeight * 0.05,
               horizontal: 10,
             ),
-            child: Image.asset(
-              'assets/swami.jpg',
-            ),
+            child: Image.asset('assets/swami.jpg'),
           ),
         );
       },
@@ -36,12 +39,7 @@ class _HomePageState extends State<HomePage> {
   Widget _pickNavigate(BuildContext context) {
     return Stack(
       children: [
-        Center(
-          child: Image.asset(
-            'assets/house.png',
-            fit: BoxFit.cover,
-          ),
-        ),
+        Center(child: Image.asset('assets/house.png', fit: BoxFit.cover)),
         LayoutBuilder(
           builder: (context, constraints) {
             return Center(
@@ -54,9 +52,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PickPage(
-                          index: index,
-                        ),
+                        builder: (context) => PickPage(index: index),
                       ),
                     );
                   },
@@ -78,14 +74,8 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _children(BuildContext context) {
     return [
-      Flexible(
-        flex: 1,
-        child: _swamiFrame(context),
-      ),
-      Flexible(
-        flex: 1,
-        child: _pickNavigate(context),
-      ),
+      Flexible(flex: 1, child: _swamiFrame(context)),
+      Flexible(flex: 1, child: _pickNavigate(context)),
     ];
   }
 
@@ -117,16 +107,14 @@ class _HomePageState extends State<HomePage> {
                   tooltip: 'Info',
                   onPressed: () async {
                     // launch the url into github repo
-                    final url =
-                        Uri.parse('https://github.com/immadisairaj/sai_chits');
+                    final url = Uri.parse(
+                      'https://github.com/immadisairaj/sai_chits',
+                    );
                     if (!await launchUrl(url)) {
                       // Do nothing when cannot launch
                     }
                   },
-                  icon: const Icon(
-                    Icons.info_outline,
-                    color: Colors.white,
-                  ),
+                  icon: const Icon(Icons.info_outline, color: Colors.white),
                 ),
               ),
               // Download if prompt is enabled
@@ -148,6 +136,21 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconButton(
+                  tooltip: 'APK Download',
+                  onPressed: () async {
+                    final url = Uri.parse(
+                      "https://saichits.immadisairaj.dev/sai-chits.apk",
+                    );
+                    if (!await launchUrl(url)) {
+                      // Do nothing when cannot launch
+                    }
+                  },
+                  icon: const Icon(Icons.android_outlined, color: Colors.white),
+                ),
+              ),
             ],
             backgroundColor: Colors.transparent,
           )
