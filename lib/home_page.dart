@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  precacheImages(BuildContext context) {
+  void precacheImages(BuildContext context) {
     // pre cache images of home page
     precacheImage(const AssetImage("assets/swami.jpg"), context);
     precacheImage(const AssetImage("assets/house.png"), context);
@@ -158,7 +158,7 @@ class _HomePageState extends State<HomePage> {
     super.didChangeDependencies();
   }
 
-  _appBar() {
+  AppBar? _appBar() {
     return kIsWeb
         ? AppBar(
             actions: [
